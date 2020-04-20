@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Col, Figure, Row} from "react-bootstrap";
+import {Button, Col, Figure, Row} from "react-bootstrap";
 
 class User extends Component {
     constructor(props) {
@@ -20,6 +20,9 @@ class User extends Component {
             item: selectedItem
         }
 
+    }
+    clickHandlerBack = () => {
+        window.location.href = '/users-show'
     }
 
     render() {
@@ -60,7 +63,9 @@ class User extends Component {
                             {this.state.item.zip}
                         </p>
 
-
+                        <Button variant="info" type="submit" onClick={this.clickHandlerBack}>
+                            Back
+                        </Button>
                     </Col>
                 </Row>
             </>

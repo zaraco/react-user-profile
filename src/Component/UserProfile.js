@@ -98,6 +98,7 @@ class UserProfile extends Component {
     }
 
 
+
     render() {
         let errorAlert = this.state.error !== '' ? <Alert variant="danger">
             {this.state.error} </Alert> : null
@@ -147,6 +148,16 @@ class UserProfile extends Component {
                             <Form.Control value={this.state.zip} onChange={this.changeHandlerZip}/>
                         </Form.Group>
                     </Form.Row>
+
+                    <div className="mb-3">
+                        <Form.File id="formcheck-api-regular">
+                            <Form.File.Label>Regular file input</Form.File.Label>
+                            <Form.File.Input onChange={this.changeHandlerImage} />
+                        </Form.File>
+                    </div>
+
+
+                    <br/>
 
                     <Button variant="primary" type="submit" onClick={this.clickHandlerButton}>
                         Submit

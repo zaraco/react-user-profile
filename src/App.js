@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import UserProfile from "./Component/UserProfile";
 import ShowUsers from "./Component/ShowUsers";
 import User from "./Component/User";
-import {Col, Container, Row} from "react-bootstrap";
+import {Col, Container, Jumbotron, Row} from "react-bootstrap";
 
 class App extends Component{
   constructor() {
@@ -17,15 +17,19 @@ class App extends Component{
             <Container>
                 <Row>
                     <Col>
-                        <Router>
-                            <Switch>
+                        <br/>
+                        <Jumbotron>
+                            <Router>
+                                <Switch>
 
-                                <Route path="/user-profile" component={UserProfile}/>
-                                <Route path="/users-show" component={ShowUsers}/>
-                                <Route path="/user-show/:id" component={User}/>
+                                    <Route path="/user-profile" component={UserProfile}/>
+                                    <Route path="/users-show" component={ShowUsers}/>
+                                    <Route path="/user-show/:id" component={User}/>
 
-                            </Switch>
-                        </Router>
+                                </Switch>
+                            </Router>
+                        </Jumbotron>
+
                     </Col>
                 </Row>
             </Container>
