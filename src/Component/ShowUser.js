@@ -4,7 +4,15 @@ import {Col, Form, Row, Table} from "react-bootstrap";
 class ShowUser extends Component {
     constructor() {
         super();
+
         let items = JSON.parse(localStorage.getItem('items'))
+
+        if (items == null) {
+            localStorage.setItem('items', JSON.stringify([]))
+            items = []
+        }
+
+
         this.state = {
             items: items,
             search:''
@@ -30,7 +38,7 @@ class ShowUser extends Component {
                 <th>{item.state}</th>
                 <th>{item.zip}</th>
             </tr>
-        ) : ''
+        ) : null
 
 
         return (
