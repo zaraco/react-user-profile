@@ -4,6 +4,9 @@ import {Form, Col, Button, Alert} from "react-bootstrap";
 class UserProfile extends Component {
     constructor() {
         super();
+
+        this.textInput = React.createRef();
+
         this.state = {
             firstName: '',
             lastName: '',
@@ -15,6 +18,11 @@ class UserProfile extends Component {
 
         }
     }
+
+    componentDidMount() {
+        this.textInput.current.focus();
+    }
+
 
     changeHandlerName = (e) => {
         this.setState({
@@ -98,7 +106,6 @@ class UserProfile extends Component {
     }
 
 
-
     render() {
         let errorAlert = this.state.error !== '' ? <Alert variant="danger">
             {this.state.error} </Alert> : null
@@ -111,7 +118,8 @@ class UserProfile extends Component {
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridFirstName">
                             <Form.Label>FirstName</Form.Label>
-                            <Form.Control type="text" placeholder="Enter FirstName" value={this.state.firstName}
+                            <Form.Control type="text" placeholder="Enter FirstName" ref={this.textInput}
+                                          value={this.state.firstName}
                                           onChange={this.changeHandlerName}/>
                         </Form.Group>
 
@@ -152,7 +160,7 @@ class UserProfile extends Component {
                     <div className="mb-3">
                         <Form.File id="formcheck-api-regular">
                             <Form.File.Label>Regular file input</Form.File.Label>
-                            <Form.File.Input onChange={this.changeHandlerImage} />
+                            <Form.File.Input onChange={this.changeHandlerImage}/>
                         </Form.File>
                     </div>
 

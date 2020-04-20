@@ -64,7 +64,7 @@ class User extends Component {
                         </p>
 
                         <Button variant="info" type="submit" onClick={this.clickHandlerBack}>
-                            Back
+                              Back Button
                         </Button>
                     </Col>
                 </Row>
