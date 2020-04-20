@@ -15,7 +15,7 @@ class ShowUser extends Component {
 
         this.state = {
             items: items,
-            search:''
+            search: ''
         }
     }
 
@@ -30,13 +30,37 @@ class ShowUser extends Component {
         const {items} = this.state
 
         let user = items.length ? items.map((item, i) =>
-            <tr>
-                <th>{item.firstName}</th>
-                <th>{item.lastName}</th>
-                <th>{item.address}</th>
-                <th>{item.city}</th>
-                <th>{item.state}</th>
-                <th>{item.zip}</th>
+            <tr key={i} style={
+                item.firstName.toLowerCase().includes(this.state.search.toLowerCase()) || item.lastName.toLowerCase().includes(this.state.search.toLowerCase()) || item.address.toLowerCase().includes(this.state.search.toLowerCase()) || item.city.toLowerCase().includes(this.state.search.toLowerCase()) || item.state.toLowerCase().includes(this.state.search.toLowerCase()) || item.zip.toLowerCase().includes(this.state.search.toLowerCase()) ? {display: 'table-row'} : {display: 'none'}
+            }>
+                <th style={
+                    item.firstName.length > 4 ? {background: 'red'} : {background: 'blue'}
+                }>{item.firstName}</th>
+
+                <th style={
+                    item.lastName.length > 5 ? {background: 'yellow'} : {background: 'orange'}
+
+                }>{item.lastName}</th>
+
+                <th style={
+                    item.address.length > 6 ? {background: 'pink'} : {background: 'gray'}
+
+                }>{item.address}</th>
+
+                <th style={
+                    item.city.length > 7 ? {background: 'green'} : {background: 'violet'}
+
+                }>{item.city}</th>
+
+                <th style={
+                    item.state.length > 3 ? {background: 'brown'} : {background: 'gold'}
+
+                }>{item.state}</th>
+
+                <th style={
+                    item.zip.length > 2 ? {background: 'silver'} : {background: 'blue'}
+
+                }>{item.zip}</th>
             </tr>
         ) : null
 
