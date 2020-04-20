@@ -86,12 +86,14 @@ class UserProfile extends Component {
                 zip: ''
             })
 
+            window.location.href = '/users-show'
+
+
         } else {
             this.setState({
                 error: 'Please fill the fields'
             })
         }
-       // window.location.href = '/users-show'
 
     }
 
