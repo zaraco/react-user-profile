@@ -91,7 +91,7 @@ class UserProfile extends Component {
                 error: 'Please fill the fields'
             })
         }
-
+       // window.location.href = '/users-show'
 
     }
 
@@ -99,11 +99,11 @@ class UserProfile extends Component {
     render() {
         let errorAlert = this.state.error !== '' ? <Alert variant="danger">
             {this.state.error} </Alert> : null
-           return (
+        return (
 
-               <>
+            <>
 
-            {errorAlert}
+                {errorAlert}
                 <Form>
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridFirstName">

@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {Col, Form, Row, Table} from "react-bootstrap";
 
-class ShowUser extends Component {
-    constructor() {
-        super();
+class ShowUsers extends Component {
+    constructor(props) {
+        super(props);
 
         let items = JSON.parse(localStorage.getItem('items'))
 
@@ -29,13 +29,14 @@ class ShowUser extends Component {
 
         const {items} = this.state
 
-        let user = items.length ? items.map((item, i) =>
+        let users = items.length ? items.map((item, i) =>
             <tr key={i} style={
                 item.firstName.toLowerCase().includes(this.state.search.toLowerCase()) || item.lastName.toLowerCase().includes(this.state.search.toLowerCase()) || item.address.toLowerCase().includes(this.state.search.toLowerCase()) || item.city.toLowerCase().includes(this.state.search.toLowerCase()) || item.state.toLowerCase().includes(this.state.search.toLowerCase()) || item.zip.toLowerCase().includes(this.state.search.toLowerCase()) ? {display: 'table-row'} : {display: 'none'}
-            }>
+            } onClick={() => {window.location.href=`/user-show/${item.id}`}}>
                 <th style={
                     item.firstName.length > 4 ? {background: 'red'} : {background: 'blue'}
-                }>{item.firstName}</th>
+
+                } >{item.firstName}</th>
 
                 <th style={
                     item.lastName.length > 5 ? {background: 'yellow'} : {background: 'orange'}
@@ -92,7 +93,7 @@ class ShowUser extends Component {
                     </thead>
 
                     <tbody>
-                    {user}
+                    {users}
                     </tbody>
 
                 </Table>
@@ -101,4 +102,4 @@ class ShowUser extends Component {
     }
 }
 
-export default ShowUser;
+export default ShowUsers;
