@@ -31,7 +31,7 @@ class ShowUsers extends Component {
 
         let users = items.length ? items.map((item, i) =>
             <tr key={i} style={
-                item.firstName.toLowerCase().includes(this.state.search.toLowerCase()) || item.lastName.toLowerCase().includes(this.state.search.toLowerCase()) || item.address.toLowerCase().includes(this.state.search.toLowerCase()) || item.city.toLowerCase().includes(this.state.search.toLowerCase()) || item.state.toLowerCase().includes(this.state.search.toLowerCase()) || item.zip.toLowerCase().includes(this.state.search.toLowerCase()) ? {display: 'table-row'} : {display: 'none'}
+                item.firstName.toLowerCase().includes(this.state.search.toLowerCase()) || item.lastName.toLowerCase().includes(this.state.search.toLowerCase()) || item.address.toLowerCase().includes(this.state.search.toLowerCase()) || item.city.toLowerCase().includes(this.state.search.toLowerCase()) || item.state.toLowerCase().includes(this.state.search.toLowerCase()) || item.zip.toLowerCase().includes(this.state.search.toLowerCase()) ? {display: 'table-row', cursor: 'pointer'} : {display: 'none'}
             } onClick={() => {window.location.href=`/user-show/${i}`}}>
                 <th style={
                     item.firstName.length > 4 ? {background: 'red'} : {background: 'blue'}
