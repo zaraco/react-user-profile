@@ -1,7 +1,8 @@
 import React, {Component} from "react";
-import {Col, Form, Row, Table} from "react-bootstrap";
+import {Button, Col, Form, Row, Table} from "react-bootstrap";
 
 class ShowUsers extends Component {
+
     constructor(props) {
         super(props);
 
@@ -11,6 +12,8 @@ class ShowUsers extends Component {
             localStorage.setItem('items', JSON.stringify([]))
             items = []
         }
+
+        console.log(items)
 
 
         this.state = {
@@ -25,18 +28,30 @@ class ShowUsers extends Component {
         })
     }
 
-    render() {
+    deleteRow = (id) => {
+        let newItems = this.state.items
+        newItems.splice(id, 1)
 
+        //console.log(newItems)
+
+        localStorage.setItem('items', JSON.stringify(newItems))
+        this.setState({
+            items: newItems
+        })
+    }
+
+    render() {
         const {items} = this.state
 
         let users = items.length ? items.map((item, i) =>
             <tr key={i} style={
-                item.firstName.toLowerCase().includes(this.state.search.toLowerCase()) || item.lastName.toLowerCase().includes(this.state.search.toLowerCase()) || item.address.toLowerCase().includes(this.state.search.toLowerCase()) || item.city.toLowerCase().includes(this.state.search.toLowerCase()) || item.state.toLowerCase().includes(this.state.search.toLowerCase()) || item.zip.toLowerCase().includes(this.state.search.toLowerCase()) ? {display: 'table-row', cursor: 'pointer'} : {display: 'none'}
-            } onClick={() => {window.location.href=`/user-show/${i}`}}>
+                item.firstName.toLowerCase().includes(this.state.search.toLowerCase()) || item.lastName.toLowerCase().includes(this.state.search.toLowerCase()) || item.address.toLowerCase().includes(this.state.search.toLowerCase()) || item.city.toLowerCase().includes(this.state.search.toLowerCase()) || item.state.toLowerCase().includes(this.state.search.toLowerCase()) || item.zip.toLowerCase().includes(this.state.search.toLowerCase()) ? {
+                    display: 'table-row'} : {display: 'none'}
+            }>
                 <th style={
                     item.firstName.length > 4 ? {background: 'red'} : {background: 'blue'}
 
-                } >{item.firstName}</th>
+                }>{item.firstName}</th>
 
                 <th style={
                     item.lastName.length > 5 ? {background: 'yellow'} : {background: 'orange'}
@@ -62,6 +77,17 @@ class ShowUsers extends Component {
                     item.zip.length > 2 ? {background: 'silver'} : {background: 'blue'}
 
                 }>{item.zip}</th>
+
+                <td>
+                    <Button variant="success" size="sm" onClick={() => {
+                        window.location.href = `/user-show/${i}`
+                    }}>Show</Button>
+
+                </td>
+                <td>
+                    <Button variant="danger" size="sm" onClick={()=>{this.deleteRow(i)}}>Delete</Button>
+
+                </td>
             </tr>
         ) : null
 
@@ -89,6 +115,8 @@ class ShowUsers extends Component {
                         <th>City</th>
                         <th>State</th>
                         <th>Zip</th>
+                        <td>Show</td>
+                        <td>clear</td>
                     </tr>
                     </thead>
 
