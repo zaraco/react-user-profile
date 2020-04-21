@@ -88,6 +88,12 @@ class ShowUsers extends Component {
                     <Button variant="danger" size="sm" onClick={()=>{this.deleteRow(i)}}>Delete</Button>
 
                 </td>
+
+                <td>
+                    <Button variant="info" size="sm" onClick={() => {
+                        window.location.href = `/user-edit/${i}`}}>Edit</Button>
+
+                </td>
             </tr>
         ) : null
 
@@ -116,7 +122,8 @@ class ShowUsers extends Component {
                         <th>State</th>
                         <th>Zip</th>
                         <td>Show</td>
-                        <td>clear</td>
+                        <td>Clear</td>
+                        <td>Edit</td>
                     </tr>
                     </thead>
 
